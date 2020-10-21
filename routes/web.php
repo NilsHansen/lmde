@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use GrahamCampbell\Markdown\Facades\Markdown;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,12 @@ use GrahamCampbell\Markdown\Facades\Markdown;
 |
 */
 
+Route::get('/login', function() {
+    return view('login');
+})->name('login');
+
+Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
+
 Route::get('/', function () {
     return view('welcome');
-});
+})->middleware('auth');

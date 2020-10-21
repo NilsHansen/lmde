@@ -1,47 +1,36 @@
-<!doctype html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+@extends('layout')
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+@push('javascript')
+<script>
+    $(document).ready(function() {
+        $('#editor')
+            .focus()
+            .keyup(function() {
+                $('#currentChars').text($(this).val().length)
+            })
+        ;
+    });
+</script>
+@endpush
 
-    <style type="text/css">
-    #editor {
-        background-color: rgba(255,255,255,0.1);
-        margin-top: 15px;
-        height: calc(100% - 30px);
-        font-size: 12px;
-        resize: none;
-    }
+@section('title','Editmode')
 
-    #editor:focus {
-        outline: none;
-    }
-
-    </style>    
-
-    <title>Hello, world!</title>
-  </head>
-  <body>
-    <div class="container-fluid">
-        <div class="row min-vh-100">
-            <div class="col-12 col-md-6 bg-info">
-                <textarea class="rounded border-0 w-100 p-3" id="editor" rows="10"></textarea>
-            </div>
-            <div class="col-12 col-md-6">
-
+@section('content')
+<div class="container-fluid">
+    <div class="row min-vh-100">
+        <div class="col-12 col-md-6 bg-info">
+            <textarea class="rounded border-0 w-100 p-3 text-black-50" spellcheck="false" id="editor" rows="10"></textarea>
+            <hr class="my-2" />
+            <div class="small row text-black-25">
+                <div class="col-12 col-md-6">{{__('Characters')}}: <span id="currentChars">0</span></div>
+                <div class="d-none d-md-block col-md-6 text-right">
+                    {{__('Made with')}} <i class="fas fa-heart"></i> - {{__('Powered by')}} <i class="fab fa-laravel"></i> & <i class="fab fa-linux"></i>
+                </div>
             </div>
         </div>
+        <div class="col-12 col-md-6">
+
+        </div>
     </div>
-    <script src="{{ asset('js/jquery-3.5.1.slim.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            $('#editor').focus();
-        });
-    </script>
-  </body>
-</html>
+</div>
+@endsection
