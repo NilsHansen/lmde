@@ -17,10 +17,15 @@ class LoginController extends Controller
 
         $cred = $request->only('email','password');
 
-        if(Auth::attempt($cred)) {
+        if(Auth::attempt($cred, $request->input('remember'))) {
             return redirect()->intended();
         }
 
         return back()->withErrors(new MessageBag(['email' => [__('Email and/or password invalid')]]));
+    }
+
+    public function logout() {
+        Auth::logout();
+        return redirect()->back();
     }
 }
