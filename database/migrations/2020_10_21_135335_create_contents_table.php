@@ -17,6 +17,8 @@ class CreateContentsTable extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('slug')->unique();
+            $table->string('name');
+            $table->boolean('external')->default(0);
             $table->longtext('content');
             $table->timestamps();
         });

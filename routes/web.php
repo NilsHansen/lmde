@@ -3,17 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use GrahamCampbell\Markdown\Facades\Markdown;
 use App\Http\Controllers\LoginController;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\ContentController;
+use App\Models\Content;
 
 Route::get('/login', function() {
     return view('login');
@@ -21,7 +12,12 @@ Route::get('/login', function() {
 
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::resource('/editor', ContentController::class)->middleware('auth');
+Route::get('/{content}',function(Content $content) {
+    if($content->external == 1)
+        return view('external', compact('content'));
+    else
+        abort(404);
+});
 
-Route::get('/', function () {
-    return view('welcome');
-})->middleware('auth');
+Route::redirect('/','/editor');

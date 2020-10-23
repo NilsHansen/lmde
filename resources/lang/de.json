@@ -10,5 +10,6 @@
     "Email and/or password invalid" : "Benutzername oder Kennwort fehlerhaft...",
     "Logged In as" : "Eingeloggt als",
     "Profile" : "Profil",
-    "Logout" : "Ausloggen"
+    "Logout" : "Ausloggen",
+    "Create a new note" : "Neue Notiz anlegen"
 }
