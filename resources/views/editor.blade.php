@@ -18,6 +18,7 @@
                 data: { content: $('#editor').val() }
             }).done(function() {
                 saveAble = 0;
+                $('#editTime').text(moment());
             });
         }
     }
@@ -49,7 +50,7 @@
 
             setInterval(function() {
                 saveContentToDB();
-            }, 5000);
+            }, 10000);
 
             $('#external').change(function() {
                 var checked = ($(this).is(':checked') ? 1 : 0);
@@ -60,7 +61,14 @@
                     data: { external: checked }
                 });
             });
+            var updateLastEdited = function() {
+                $("#lastSaved").text(moment($('#editTime').text()).fromNow());
+            }
+            updateLastEdited();
 
+            setInterval(function() {
+                updateLastEdited();
+            }, 1000);
         @else
             $('#editName').focus();
         @endif
@@ -87,6 +95,7 @@
 @endsection
 
 @section('content')
+<div class="d-none" id="editTime">{{ $editor->updated_at }}</div>
 <div class="container-fluid">
     <div class="row min-vh-100">
         <div class="col-12 col-md-6 bg-info">
@@ -104,12 +113,12 @@
                         </div>
                     </div>
                 </div> @endif
-                <textarea class="rounded border-0 w-100 p-3 text-black-50" name="content" spellcheck="false" id="editor" rows="10">{{ $editor->content ?? ''}}</textarea>
+                <textarea class="rounded border-0 w-100 p-3 text-black-50 overflow-hidden" name="content" spellcheck="false" id="editor" rows="10">{{ $editor->content ?? ''}}</textarea>
                 <hr class="my-2" />
                 <div class="small row text-black-25">
                     <div class="col-12 col-md-6">
                         {{__('Characters')}}: <span id="currentChars">0</span>
-                        <span id="lastSaved"></span>
+                        |<i class="fas fa-download mx-1"></i><span id="lastSaved"></span>
                     </div>
                     <div class="d-none d-md-block col-md-6 text-right">
                         {{__('Made with')}} <i class="fas fa-heart"></i> - {{__('Powered by')}} <i class="fab fa-laravel"></i> & <i class="fab fa-linux"></i>
@@ -129,7 +138,7 @@
                 @isset($editor)
                     <a href="#" class="btn btn-secondary btn-sm ml-4" title="{{ __('Delete this note')}}" onclick="event.preventDefault();if(confirm('{{ __('Do you really want to delete this note?') }}')) document.getElementById('delete-form').submit();"><i class="fas fa-trash-alt"></i></a>
                     <div class="custom-control custom-switch">
-                        <input type="checkbox" class="custom-control-input" id="external" name="external">
+                        <input type="checkbox" class="custom-control-input" id="external" name="external"@if(isset($editor) && $editor->external == 1) checked @endif>
                         <label class="custom-control-label pt-1" for="external">{{ __('Make this note external') }}</label>
                     </div>
                 @endisset

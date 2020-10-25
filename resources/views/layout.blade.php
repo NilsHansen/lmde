@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styles/default.css') }}">
     @stack('cssfiles')
 
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('icons/apple-icon-57x57.png') }}">
@@ -35,6 +36,10 @@
     
     <script src="{{ asset('js/jquery-3.5.1.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('js/highlight.pack.js') }}"></script>
+    <script src="{{ asset('js/moment.js') }}"></script>
+    <script>moment.locale('de');</script>
+    <script>hljs.initHighlightingOnLoad();</script>
     @stack('javascript')
   </body>
 </html>

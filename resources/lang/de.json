@@ -11,5 +11,6 @@
     "Logged In as" : "Eingeloggt als",
     "Profile" : "Profil",
     "Logout" : "Ausloggen",
-    "Create a new note" : "Neue Notiz anlegen"
+    "Create a new note" : "Neue Notiz anlegen",
+    "Make this note external" : "Soll diese Notiz extern anzeigbar sein?"
 }

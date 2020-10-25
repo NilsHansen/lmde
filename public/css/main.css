@@ -68,3 +68,11 @@ color:#fff;
 #imageDropdown:hover {
     text-decoration: none;
 }
+
+.table-of-contents > li {
+    list-style-type: none;
+}
+
+.table-of-contents p {
+    margin: 0;
+}

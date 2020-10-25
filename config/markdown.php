@@ -41,7 +41,23 @@ return [
     |
     */
 
-    'extensions' => [],
+    'extensions' => ['League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension', 'League\CommonMark\Extension\TableOfContents\TableOfContentsExtension'],
+
+    'heading_permalink' => [
+        'html_class' => 'ml-2',
+        'insert' => 'after',
+        'symbol' => '#',
+    ],
+
+    'table_of_contents' => [
+        'html_class' => 'position-fixed bg-light border shadow p-2 table-of-contents',
+        'position' => 'top',
+        'style' => 'bullet',
+        'min_heading_level' => 1,
+        'max_heading_level' => 6,
+        'normalize' => 'as-is',
+        'placeholder' => null,
+    ],
 
     /*
     |--------------------------------------------------------------------------

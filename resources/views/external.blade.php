@@ -1,15 +1,21 @@
 @extends('layout')
 
-@push('javascript')
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('#content').html(marked($('#fakeContent').html()));
-    });
-</script>
+@push('cssfiles')
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Quicksand">
+<style type="text/css">
+body {
+    background-color: #336699;
+    font-family: 'Quicksand', serif;
+}
+</style>
 @endpush
 
+@section('title',$content->name)
+
 @section('content')
-<div id="fakeContent" class="d-none">{!! $content->content !!}</div>
-<div id="content"></div>
+<div class="container bg-light shadow">
+    <div class="row min-vh-100 pt-3">
+        <div class="col-12 overflow-hidden">@markdown{!! $content->content !!}@endmarkdown</div>
+    </div>
+</div>
 @endsection
