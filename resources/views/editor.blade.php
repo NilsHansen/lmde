@@ -95,7 +95,7 @@
 @endsection
 
 @section('content')
-<div class="d-none" id="editTime">{{ $editor->updated_at }}</div>
+@isset($editor)<div class="d-none" id="editTime">{{ $editor->updated_at }}</div>@endisset
 <div class="container-fluid">
     <div class="row min-vh-100">
         <div class="col-12 col-md-6 bg-info">

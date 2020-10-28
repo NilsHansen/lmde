@@ -12,5 +12,9 @@
     "Profile" : "Profil",
     "Logout" : "Ausloggen",
     "Create a new note" : "Neue Notiz anlegen",
-    "Make this note external" : "Soll diese Notiz extern anzeigbar sein?"
+    "Make this note external" : "Soll diese Notiz extern anzeigbar sein?",
+    "Table of contents" : "Inhaltsverzeichnis",
+    "Edit" : "Bearbeiten",
+    "Login to" : "Einloggen zum",
+    "Other notes" : "Andere Notizen"
 }

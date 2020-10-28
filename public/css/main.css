@@ -76,3 +76,12 @@ color:#fff;
 .table-of-contents p {
     margin: 0;
 }
+
+.table-of-contents {
+    
+}
+
+#menu {
+    left: -40px;
+    cursor: pointer;
+}

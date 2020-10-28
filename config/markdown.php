@@ -44,13 +44,12 @@ return [
     'extensions' => ['League\CommonMark\Extension\HeadingPermalink\HeadingPermalinkExtension', 'League\CommonMark\Extension\TableOfContents\TableOfContentsExtension'],
 
     'heading_permalink' => [
-        'html_class' => 'ml-2',
-        'insert' => 'after',
+        'html_class' => 'mr-2',
         'symbol' => '#',
     ],
 
     'table_of_contents' => [
-        'html_class' => 'position-fixed bg-light border shadow p-2 table-of-contents',
+        'html_class' => 'position-fixed table-of-contents bg-light border p-2 d-none',
         'position' => 'top',
         'style' => 'bullet',
         'min_heading_level' => 1,

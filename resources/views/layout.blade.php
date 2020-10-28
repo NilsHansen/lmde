@@ -29,7 +29,7 @@
     <meta name="msapplication-TileImage" content="{{ asset('icons/ms-icon-144x144.png') }}">
     <meta name="theme-color" content="#ffffff">
 
-    <title>lmde @hasSection('title'):: @yield('title')@endif</title>
+    <title>notes @hasSection('title'):: @yield('title')@endif</title>
   </head>
   <body>
     @yield('content')
