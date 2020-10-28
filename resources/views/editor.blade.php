@@ -1,7 +1,7 @@
 @extends('layout')
 
 @push('javascript')
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script src="{{ asset('js/marked.min.js') }}"></script>
 <script>
     $.ajaxSetup({
         headers: {
