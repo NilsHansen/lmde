@@ -128,7 +128,7 @@
         </div>
         <div class="col-12 col-md-6 mt-3 small">
             <div class="row">
-                <div class="col-9 col-md-6">
+                <div class="col-9 col-md-8">
                 <select name="selectedContent" class="custom-select custom-select-sm @isset($editor)w-75 @endisset">
                     <option value="_new_">{{ __('Create a new note')}}</option>
                     @foreach($contents as $content)
@@ -136,14 +136,15 @@
                     @endforeach
                 </select>
                 @isset($editor)
-                    <a href="#" class="btn btn-secondary btn-sm ml-4" title="{{ __('Delete this note')}}" onclick="event.preventDefault();if(confirm('{{ __('Do you really want to delete this note?') }}')) document.getElementById('delete-form').submit();"><i class="fas fa-trash-alt"></i></a>
+                    <a href="#" class="btn btn-secondary btn-sm ml-2" title="{{ __('Delete this note')}}" onclick="event.preventDefault();if(confirm('{{ __('Do you really want to delete this note?') }}')) document.getElementById('delete-form').submit();"><i class="fas fa-trash-alt"></i></a>
+                    <a href="{{ route('contentLink',$editor) }}" class="btn btn-secondary btn-sm ml-2" title="{{ __('View this note')}}"><i class="fas fa-eye"></i></a>
                     <div class="custom-control custom-switch">
                         <input type="checkbox" class="custom-control-input" id="external" name="external"@if(isset($editor) && $editor->external == 1) checked @endif>
                         <label class="custom-control-label pt-1" for="external">{{ __('Make this note external') }}</label>
                     </div>
                 @endisset
                 </div>
-                <div class="col-3 col-md-6 text-right">
+                <div class="col-3 col-md-4 text-right">
                     <div class="dropdown">
                         <a href="#" id="imageDropdown" data-toggle="dropdown">
                             <span class="d-none d-md-inline-block">{{ __('Logged In as') }}: {{ Auth::user()->name }}</span> <img src="https://www.gravatar.com/avatar/{{ md5(strtolower(Auth::user()->email)) }}?&s=40" class="rounded-circle" />
