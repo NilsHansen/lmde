@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="generator" content="Laravel v{{ Illuminate\Foundation\Application::VERSION }} | VisualStudioCode on ArchLinux">
     <link rel="canonical" href="{{ Request::url() }}">
 
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">

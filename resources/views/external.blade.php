@@ -53,6 +53,7 @@ $(document).ready(function() {
                             </ul>
                         </div>
                         <div class="col-6 col-md-4">
+                            @if(count($otherContent) >= 1)
                             <select class="custom-select" id="selectSwitch">
                                 <option>{{ __('Other notes') }}</option>
                                 <option disabled>&#9473;&#9473;&#9473;&#9473;&#9473;&#9473;&#9473;&#9473;</option>
@@ -60,6 +61,7 @@ $(document).ready(function() {
                                 <option value="{{ route('contentLink',$oc) }}">{{ $oc->name }}</option>
                                 @endforeach
                             </select>
+                            @endif
                         </div>
                     </div>
                 </div>
