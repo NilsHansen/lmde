@@ -104,16 +104,16 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="row mt-2">
-                            <div class="col-11">
-                                <input type="text" name="name" class="form-control border-0 text-black-50" id="editName" />
+                            <div class="col-10">
+                                <input type="text" name="name" class="form-control border-0 text-black-50" id="editName" placeholder="{{ __('Snippet Name') }}" required />
                             </div>
-                            <div class="col-1">
+                            <div class="col-2">
                                 <button name="submit" class="form-control btn btn-secondary btn-sm" title="{{ __('Save this note')}}"><i class="far fa-save"></i></button>
                             </div>
                         </div>
                     </div>
                 </div> @endif
-                <textarea class="rounded border-0 w-100 p-3 text-black-50 overflow-hidden" name="content" spellcheck="false" id="editor" rows="10">{{ $editor->content ?? ''}}</textarea>
+                <textarea class="rounded border-0 w-100 p-3 text-black-50" name="content" spellcheck="false" id="editor" rows="10" placeholder="{{ __('Lets go! Start typing!') }}">{{ $editor->content ?? ''}}</textarea>
                 <hr class="my-2" />
                 <div class="small row text-black-25">
                     <div class="col-12 col-md-6">
@@ -128,7 +128,7 @@
         </div>
         <div class="col-12 col-md-6 mt-3 small">
             <div class="row">
-                <div class="col-6">
+                <div class="col-9 col-md-6">
                 <select name="selectedContent" class="custom-select custom-select-sm @isset($editor)w-75 @endisset">
                     <option value="_new_">{{ __('Create a new note')}}</option>
                     @foreach($contents as $content)
@@ -143,7 +143,7 @@
                     </div>
                 @endisset
                 </div>
-                <div class="col-6 text-right">
+                <div class="col-3 col-md-6 text-right">
                     <div class="dropdown">
                         <a href="#" id="imageDropdown" data-toggle="dropdown">
                             <span class="d-none d-md-inline-block">{{ __('Logged In as') }}: {{ Auth::user()->name }}</span> <img src="https://www.gravatar.com/avatar/{{ md5(strtolower(Auth::user()->email)) }}?&s=40" class="rounded-circle" />
@@ -157,7 +157,7 @@
             </div>
             <hr class="mt-1" />
             <div class="row">
-                <div class="col-12" id="preview"></div>
+                <div class="col-12 text-break" id="preview"></div>
             </div>
         </div>
     </div>

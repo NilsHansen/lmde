@@ -37,15 +37,15 @@
 }
 
 #cover .form-group {
-position: relative;
+    position: relative;
 }
 
 #cover .btn-link {
-color:#fff;
+    color:#fff;
 }
 
 #cover .btn-link:hover {
-color:#fff;
+    color:#fff;
 }
 
 /* only used for background overlay not needed for centering */
@@ -77,11 +77,16 @@ color:#fff;
     margin: 0;
 }
 
-.table-of-contents {
-    
+#menu {
+    color: #222;
 }
 
-#menu {
-    left: -40px;
-    cursor: pointer;
+#menu li:first-child {
+    font-size: 120%;
+    font-weight: bold;
+    margin-right: 30px;
+}
+
+#menu .far.fa-sticky-note {
+    color: #336699;
 }

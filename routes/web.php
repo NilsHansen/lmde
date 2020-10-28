@@ -15,11 +15,15 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::resource('/editor', ContentController::class)->middleware('auth');
 Route::get('/{content}',function(Content $content) {
     if($content->external == 1 || Auth::user()->id == $content->user_id) {
-        $otherContent = Content::where('external',1)->get();
-        dd($otherContent);
+        $otherContent = Content::where(function($query) {
+            if(Auth::user())
+                $query->where('external',1)->orWhere('user_id', Auth::user()->id);
+            else
+                $query->where('external',1);
+        })->where('id','!=',$content->id)->get(['slug','name']);
         return view('external', compact('content','otherContent'));
     } else
         abort(404);
-});
+})->name('contentLink');
 
 Route::redirect('/','/editor');
