@@ -8,7 +8,7 @@ use App\Models\Content;
 
 Route::get('/login', function() {
     return view('login');
-})->name('login');
+})->name('loginS');
 
 Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
