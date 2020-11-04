@@ -22,8 +22,10 @@ $(document).ready(function() {
         else
             $('.table-of-contents').addClass('d-none');
     });
-    $(".table-of-contents a[href^='#']").on('click', function(e) {
-        $('#toc').trigger('click');
+    $("#content a[href^='#']").on('click', function(e) {
+        if(!$('.table-of-contents').hasClass('d-none')) {
+            $('#toc').trigger('click');
+        }
         $('html, body').animate({
             scrollTop: $("[name="+$(this).attr('href').substring(1)+"]").offset().top - 60
             }, 300, function(){
@@ -41,7 +43,7 @@ $(document).ready(function() {
 @section('content')
 <div class="container bg-light shadow">
     <div class="row min-vh-100">
-        <div class="col-12 text-break">
+        <div class="col-12 text-break" id="content">
             <div class="sticky-top bg-light py-2 border-bottom mb-2 small">
                 <div class="container">
                     <div class="row h-100">
