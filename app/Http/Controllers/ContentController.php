@@ -56,6 +56,8 @@ class ContentController extends Controller
      */
     public function show(Content $editor)
     {
+        if($editor->user_id != Auth::user()->id)
+            abort(404);
         $contents = Content::where('user_id', Auth::user()->id)->get();
         return view('editor', compact('editor','contents'));
     }

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use GrahamCampbell\Markdown\Facades\Markdown;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ContentController;
+use Illuminate\Support\Facades\Auth;
 use App\Models\Content;
 
 Route::get('/login', function() {
@@ -14,7 +15,7 @@ Route::post('/login', [LoginController::class, 'authenticate'])->name('login');
 Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::resource('/editor', ContentController::class)->middleware('auth');
 Route::get('/{content}',function(Content $content) {
-    if($content->external == 1 || Auth::user()->id == $content->user_id) {
+    if($content->external == 1 || (Auth::check() && Auth::user()->id == $content->user_id)) {
         $otherContent = Content::where(function($query) {
             if(Auth::user())
                 $query->where('external',1)->orWhere('user_id', Auth::user()->id);
