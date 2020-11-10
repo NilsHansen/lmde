@@ -90,3 +90,17 @@
 #menu .far.fa-sticky-note {
     color: #336699;
 }
+
+@media print {
+    body {
+        background: white;
+    }
+
+    .shadow {
+        box-shadow: none!important;
+    }
+
+    .anchor {
+        display: none;
+    }
+}

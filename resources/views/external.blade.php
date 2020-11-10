@@ -50,13 +50,13 @@ $(document).ready(function() {
                         <div class="col-6 col-md-8 my-auto">
                             <ul class="list-inline mb-0" id="menu">
                                 <li class="list-inline-item"><a href="{{ route('contentLink',$content) }}" class="text-reset text-decoration-none"><i class="far fa-sticky-note"></i> Notes</a></li>
-                                <li class="list-inline-item"><a href="" id="toc" class="text-reset text-decoration-none"><i class="fas fa-book-reader"></i> <span class="d-none d-md-inline-block">{{ __('Table of contents') }}</span></a></li>
-                                <li class="list-inline-item"><a href="{{ route('editor.edit', $content) }}" class="text-reset text-decoration-none">@guest<i class="fas fa-sign-in-alt"></i> <span class="d-none d-md-inline-block">{{ __('Login to') }}</span>@else<i class="fas fa-edit"></i>@endguest <span class="d-none d-md-inline-block">{{ __('Edit') }}</span></a></li>
+                                <li class="list-inline-item d-print-none"><a href="" id="toc" class="text-reset text-decoration-none"><i class="fas fa-book-reader"></i> <span class="d-none d-md-inline-block">{{ __('Table of contents') }}</span></a></li>
+                                <li class="list-inline-item d-print-none"><a href="{{ route('editor.edit', $content) }}" class="text-reset text-decoration-none">@guest<i class="fas fa-sign-in-alt"></i> <span class="d-none d-md-inline-block">{{ __('Login to') }}</span>@else<i class="fas fa-edit"></i>@endguest <span class="d-none d-md-inline-block">{{ __('Edit') }}</span></a></li>
                             </ul>
                         </div>
                         <div class="col-6 col-md-4">
                             @if(count($otherContent) >= 1)
-                            <select class="custom-select" id="selectSwitch">
+                            <select class="custom-select d-print-none" id="selectSwitch">
                                 <option>{{ __('Other notes') }}</option>
                                 <option disabled>&#9473;&#9473;&#9473;&#9473;&#9473;&#9473;&#9473;&#9473;</option>
                                 @foreach($otherContent as $oc)
@@ -68,31 +68,6 @@ $(document).ready(function() {
                     </div>
                 </div>
             </div>
-            {{-- <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom mb-3 small sticky-top">
-                <a class="navbar-brand" href="{{ route('contentLink',$content) }}"><i class="far fa-sticky-note"></i></a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarExternal" aria-controls="navbarExternal" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarExternal">
-                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" id="toc">{{ __('Table of contents') }}</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('editor.edit', $content) }}">@guest {{ __('Login to') }} @endguest{{ __('Edit') }}</a>
-                        </li>
-                    </ul>
-                    @if(count($otherContent) >= 1)
-                    <form class="form-inline my-2 my-lg-0">
-                    {{ __('Other notes') }}: <select class="custom-select ml-2">
-                        @foreach($otherContent as $oc)
-                        <option value="{{ $oc->slug }}">{{ $oc->name }}</option>
-                        @endforeach
-                    </select>
-                    </form>
-                    @endif
-                </div>
-            </nav> --}}
             @markdown{!! $content->content !!}@endmarkdown
         </div>
     </div>
