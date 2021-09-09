@@ -27,4 +27,5 @@ Route::get('/{content}',function(Content $content) {
         abort(404);
 })->name('contentLink');
 
-Route::redirect('/','/editor');
+#Route::redirect('/','/editor');
+Route::view('/','welcome', ['notes' => Content::where('external', '1')->get() ])->name('start');
