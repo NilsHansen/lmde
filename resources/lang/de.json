@@ -21,5 +21,6 @@
     "Lets go! Start typing!" : "Leg los! Lass dich komplett aus",
     "Save this note" : "Notiz speichern!",
     "View this note" : "Notiz extern ansehen",
-    "Print" : "Drucken"
+    "Print" : "Drucken",
+    "There were no notes found." : "Es wurden keine Notizen gefunden"
 }

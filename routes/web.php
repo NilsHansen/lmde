@@ -28,7 +28,7 @@ Route::get('/{content}',function(Content $content) {
 })->name('contentLink');
 
 Route::get('/', function(Request $request) {
-    $notes = Content::where('external', '1')->get();
+    $notes = Content::where('external', '1')->get()->sortByDesc('updated_at');
     if($request->has('q')) {
         $search = $request->input('q');
         $notes = collect($notes)->filter(function ($item) use ($search) {

@@ -47,7 +47,7 @@ a:hover {
             </div>
 
             <div class="row">
-                @foreach($notes as $n)            
+                @forelse($notes as $n)            
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="border rounded p-3 bg-white note mb-4">
                     <a href="{{ route('contentLink',$n) }}" class="text-reset">
@@ -64,7 +64,11 @@ a:hover {
                     </a>
                     </div>
                 </div>
-                @endforeach
+                @empty
+                <div class="col-12">
+                    {{ __("There were no notes found.") }}
+                </div>
+                @endforelse
             </div>
         </div>
     </div>
