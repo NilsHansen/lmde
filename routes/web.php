@@ -1,10 +1,10 @@
 <?php
-
 use Illuminate\Support\Facades\Route;
 use GrahamCampbell\Markdown\Facades\Markdown;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ContentController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 use App\Models\Content;
 
 Route::get('/login', function() {
@@ -27,5 +27,13 @@ Route::get('/{content}',function(Content $content) {
         abort(404);
 })->name('contentLink');
 
-#Route::redirect('/','/editor');
-Route::view('/','welcome', ['notes' => Content::where('external', '1')->get() ])->name('start');
+Route::get('/', function(Request $request) {
+    $notes = Content::where('external', '1')->get();
+    if($request->has('q')) {
+        $search = $request->input('q');
+        $notes = collect($notes)->filter(function ($item) use ($search) {
+            return false !== stripos($item, $search);
+        });
+    }
+    return view('welcome', compact('notes'));
+})->name('start');

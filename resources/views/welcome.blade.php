@@ -32,6 +32,16 @@ a:hover {
                                 <li class="list-inline-item"><a href="{{ route('start') }}" class="text-reset text-decoration-none"><i class="far fa-sticky-note"></i> Notes</a></li>
                             </ul>
                         </div>
+                        <div class="col-6 col-md-4 text-right">
+                            <form method="get" action="{{ route('start') }}">
+                                <div class="input-group input-group-sm">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text bg-white"><i class="fas fa-search"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" name="q" value="{{ request()->input('q') }}">
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
