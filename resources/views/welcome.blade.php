@@ -30,6 +30,7 @@ a:hover {
                         <div class="col-6 col-md-8 my-auto">
                             <ul class="list-inline mb-0" id="menu">
                                 <li class="list-inline-item"><a href="{{ route('start') }}" class="text-reset text-decoration-none"><i class="far fa-sticky-note"></i> Notes</a></li>
+                                <li class="list-inline-item d-print-none"><a href="{{ route('editor.index') }}" class="text-reset text-decoration-none">@guest<i class="fas fa-sign-in-alt"></i> <span class="d-none d-md-inline-block">{{ __('Login') }}</span>@else<i class="fas fa-edit"></i> <span class="d-none d-md-inline-block">{{ __('Editor') }}</span>@endguest</a></li>
                             </ul>
                         </div>
                         <div class="col-6 col-md-4 text-right">
